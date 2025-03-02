@@ -7,9 +7,10 @@ export function parseJson(str, idx) {
     }
     idx += 1;
     let key = null;
+    let wasSeperatorSeen = false;
     let value = null;
     while (str[idx] !== '}') {
-      if (str[idx] !== ',' && /\S/.test(str[idx]) && str[idx] !== ':') {
+      if (str[idx] !== ',' && /\S/.test(str[idx])) {
         if (key === null) {
           key = parseString(str, idx);
           if (key !== null) {
@@ -19,14 +20,18 @@ export function parseJson(str, idx) {
             console.error('Expected key at index ' + idx);
             return null;
           }
+        } else if (!wasSeperatorSeen && str[idx] == ':') {
+          wasSeperatorSeen = true;
+          idx += 1;
         } else if (value === null) {
           value = parseValue(str, idx);
-          if (value !== null) {
+          if (value !== null && wasSeperatorSeen) {
             idx = value[1];
             value = value[0];
             dict[key] = value;
             key = null;
             value = null;
+            wasSeperatorSeen = false;
           } else {
             console.error(
               "Expected value for key '" + key + "' at index " + idx,
