@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main # Change to your default branch if needed
-
   workflow_dispatch: # Allows manual triggering from the GitHub UI
 
 jobs:
@@ -15,25 +14,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install Dependencies (if needed)
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          fi
-
-      - name: Build (if applicable)
-        run: |
-          if [ -f package.json ]; then
-            npm run build
-          fi
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch to deploy to
-          folder: . # Deploy the root folder (change if needed)
+          folder: . # Deploy the root folder (your HTML, JS, and CSS files)
