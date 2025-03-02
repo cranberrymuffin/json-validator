@@ -76,7 +76,6 @@ button {
   padding: 12px 24px;
   background: linear-gradient(45deg, #ff1493, #ff69b4);
   color: #fff;
-  font-size: 1.2rem;
   font-weight: bold;
   border: none;
   border-radius: 12px;
@@ -84,7 +83,6 @@ button {
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
   position: relative;
-  overflow: hidden;
 }
 
 /* Glitter animation for button */
