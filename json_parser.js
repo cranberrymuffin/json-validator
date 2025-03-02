@@ -39,7 +39,10 @@ export function parseJson(str, idx) {
       }
     }
     idx += 1;
-    return [dict, idx];
+    if (key === null && value === null) {
+      return [dict, idx];
+    }
+    return null;
   } catch (error) {
     console.error('Error in parseJson: ' + error);
     return null;
