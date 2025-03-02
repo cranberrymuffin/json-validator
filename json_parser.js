@@ -8,24 +8,27 @@ export function parseJson(str, idx) {
     idx += 1;
     let key = null;
     let wasSeperatorSeen = false;
+    let wasCommaSeen = true;
     let value = null;
     while (str[idx] !== '}') {
-      if (str[idx] !== ',' && /\S/.test(str[idx])) {
-        if (key === null) {
+      if (/\S/.test(str[idx])) {
+        if (key === null && wasCommaSeen) {
           key = parseString(str, idx);
           if (key !== null) {
             idx = key[1];
             key = key[0];
+            wasCommaSeen = false;
           } else {
+            console.log(wasCommaSeen);
             console.error('Expected key at index ' + idx);
             return null;
           }
         } else if (!wasSeperatorSeen && str[idx] == ':') {
           wasSeperatorSeen = true;
           idx += 1;
-        } else if (value === null) {
+        } else if (value === null && wasSeperatorSeen) {
           value = parseValue(str, idx);
-          if (value !== null && wasSeperatorSeen) {
+          if (value !== null) {
             idx = value[1];
             value = value[0];
             dict[key] = value;
@@ -34,17 +37,25 @@ export function parseJson(str, idx) {
             wasSeperatorSeen = false;
           } else {
             console.error(
-              "Expected value for key '" + key + "' at index " + idx,
+              "Expected key '" +
+                key +
+                "' followed by  colon seperator ':' at index " +
+                idx,
             );
             return null;
           }
+        } else if (!wasCommaSeen && str[idx] == ',') {
+          wasCommaSeen = true;
+          idx += 1;
+        } else {
+          return null;
         }
       } else {
         idx += 1;
       }
     }
     idx += 1;
-    if (key === null && value === null) {
+    if (key === null && value === null && !wasCommaSeen && !wasSeperatorSeen) {
       return [dict, idx];
     }
     return null;
