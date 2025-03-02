@@ -1,8 +1,8 @@
 /* Import a modern, stylish font */
-@import url("https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600&display=swap');
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #ffe0f0; /* Soft pastel pink */
   color: #ff1493; /* Hot pink text */
   margin: 0;
@@ -27,7 +27,7 @@ h1 {
 
 /* Glitter effect for heading */
 h1::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   bottom: -5px;
@@ -89,7 +89,7 @@ button {
 
 /* Glitter animation for button */
 button::after {
-  content: "";
+  content: '';
   position: absolute;
   top: -50%;
   left: -50%;

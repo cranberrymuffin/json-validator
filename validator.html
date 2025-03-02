@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,22 +36,22 @@
     <script type="module" src="json_parser.js"></script>
 
     <script type="module">
-      import { parseJson } from "./json_parser.js";
+      import { parseJson } from './json_parser.js';
 
       // Add event listener to button
-      document.getElementById("parseButton").addEventListener("click", () => {
-        const jsonInput = document.getElementById("jsonInput").value; // Get JSON from textarea
-        const resultMessage = document.getElementById("resultMessage"); // Area to display result
+      document.getElementById('parseButton').addEventListener('click', () => {
+        const jsonInput = document.getElementById('jsonInput').value; // Get JSON from textarea
+        const resultMessage = document.getElementById('resultMessage'); // Area to display result
         // Try parsing the JSON using parseJson function
         const result = parseJson(jsonInput, 0);
         console.log(result);
         if (result != null) {
-          resultMessage.textContent = "✨💅 Valid JSON 💅✨";
-          resultMessage.style.color = "#ff69b4";
+          resultMessage.textContent = '✨💅 Valid JSON 💅✨';
+          resultMessage.style.color = '#ff69b4';
         } else {
           // If error occurs, show invalid message
-          resultMessage.textContent = "❌😒 Invalid JSON 😒❌";
-          resultMessage.style.color = "red";
+          resultMessage.textContent = '❌😒 Invalid JSON 😒❌';
+          resultMessage.style.color = 'red';
         }
       });
     </script>
