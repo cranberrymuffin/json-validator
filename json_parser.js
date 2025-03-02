@@ -101,12 +101,22 @@ export function parseArray(str, idx) {
       return null;
     }
     idx += 1;
+    let wasCommaSeen = true;
+
     while (str[idx] !== ']') {
-      if (str[idx] !== ',' && /\S/.test(str[idx])) {
-        const val = parseValue(str, idx);
-        if (val !== null) {
-          arr.push(val[0]);
-          idx = val[1];
+      if (/\S/.test(str[idx])) {
+        if (wasCommaSeen) {
+          const val = parseValue(str, idx);
+          if (val !== null) {
+            arr.push(val[0]);
+            idx = val[1];
+            wasCommaSeen = false;
+          } else {
+            return null;
+          }
+        } else if (str[idx] == ',') {
+          wasCommaSeen = true;
+          idx += 1;
         } else {
           return null;
         }
@@ -115,7 +125,10 @@ export function parseArray(str, idx) {
       }
     }
     idx += 1;
-    return [arr, idx];
+    if (!wasCommaSeen) {
+      return [arr, idx];
+    }
+    return null;
   } catch (error) {
     console.error('Error in parseArray: ' + error);
     return null;
