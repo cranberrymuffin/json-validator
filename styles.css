@@ -1,0 +1,146 @@
+/* Import a modern, stylish font */
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffe0f0; /* Soft pastel pink */
+  color: #ff1493; /* Hot pink text */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ff007f; /* Barbie pink */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.5);
+  position: relative;
+}
+
+/* Glitter effect for heading */
+h1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(255, 20, 147, 0.6);
+  animation: glitter 1.5s infinite alternate;
+}
+
+@keyframes glitter {
+  0% {
+    box-shadow: 0 0 8px rgba(255, 20, 147, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 20, 147, 1);
+  }
+}
+
+textarea {
+  width: 80%;
+  max-width: 800px;
+  height: 80%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid #ff69b4; /* Light pink border */
+  font-size: 1.2rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+  resize: vertical;
+  transition: all 0.3s ease;
+  background-color: #fff0f8; /* Soft pastel pink */
+  color: #d1006f; /* Deep pink */
+}
+
+textarea:focus {
+  border-color: #ff1493; /* Hot pink focus */
+  outline: none;
+  box-shadow: 0 4px 12px rgba(255, 20, 147, 0.5);
+}
+
+/* Glittery button effect */
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #ff1493, #ff69b4);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glitter animation for button */
+button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 10%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  transform: rotate(30deg);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+button:hover::after {
+  opacity: 1;
+  animation: sparkle 1s infinite linear;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: rotate(30deg) translateX(-10px);
+  }
+  100% {
+    transform: rotate(30deg) translateX(10px);
+  }
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ff69b4, #ff1493);
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #d1006f;
+  transform: scale(0.95);
+}
+
+/* Validation messages */
+#resultMessage {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(255, 20, 147, 0.4);
+}
+
+.valid {
+  color: #ff007f; /* Barbie pink for valid */
+}
+
+.invalid {
+  color: #d1006f; /* Deep pink for invalid */
+}

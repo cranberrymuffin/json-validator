@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Parser Test</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>🎀 Toy JSON Parser 🎀</h1>
+
+    <!-- Input Field to Enter JSON, with example JSON pre-filled -->
+    <textarea id="jsonInput" rows="10" cols="50">
+{
+  "name": "Alice",
+  "age": 25.0,
+  "email": "alice@example.com",
+  "isStudent": false,
+  "isGraduated": true,
+  "data": [1.23e4, 12300, 5.67E-8, -0.0000000567],
+  "address": {
+    "street": "123 Main St",
+    "city": "Wonderland",
+    "zip": "12345"
+  },
+  "status": null
+}
+    </textarea>
+    <br />
+    <button id="parseButton">Parse JSON</button>
+
+    <p id="resultMessage"></p>
+    <!-- Area to display validation result -->
+
+    <!-- Include your JavaScript file -->
+    <script type="module" src="json_parser.js"></script>
+
+    <script type="module">
+      import { parseJson } from "./json_parser.js";
+
+      // Add event listener to button
+      document.getElementById("parseButton").addEventListener("click", () => {
+        const jsonInput = document.getElementById("jsonInput").value; // Get JSON from textarea
+        const resultMessage = document.getElementById("resultMessage"); // Area to display result
+        // Try parsing the JSON using parseJson function
+        const result = parseJson(jsonInput, 0);
+        console.log(result);
+        if (result != null) {
+          resultMessage.textContent = "✨💅 Valid JSON 💅✨";
+          resultMessage.style.color = "#ff69b4";
+        } else {
+          // If error occurs, show invalid message
+          resultMessage.textContent = "❌😒 Invalid JSON 😒❌";
+          resultMessage.style.color = "red";
+        }
+      });
+    </script>
+  </body>
+</html>

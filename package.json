@@ -1,0 +1,17 @@
+{
+  "name": "small_json_parser",
+  "version": "1.0.0",
+  "description": "small json parser",
+  "main": "json_parser.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "cranberrymuffin",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}
