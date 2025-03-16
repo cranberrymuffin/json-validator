@@ -79,6 +79,11 @@ export function parseJson(str, idx) {
 }
 
 export function parseValue(str, idx) {
+  // Skip initial whitespace
+  while (idx < str.length && /\s/.test(str[idx])) {
+    idx++;
+  }
+
   let val = parseNull(str, idx);
   if (val !== null) {
     return val;
@@ -166,6 +171,11 @@ export function parseArray(str, idx) {
 
 export function parseBoolean(str, idx) {
   try {
+    // Skip initial whitespace
+    while (idx < str.length && /\s/.test(str[idx])) {
+      idx++;
+    }
+
     const true_val = 'true';
     const false_val = 'false';
     if (str.slice(idx, idx + true_val.length) === true_val) {
@@ -182,6 +192,11 @@ export function parseBoolean(str, idx) {
 
 export function parseString(str, idx) {
   try {
+    // Skip initial whitespace
+    while (idx < str.length && /\s/.test(str[idx])) {
+      idx++;
+    }
+
     let data = '';
     if (str[idx] !== '"') {
       return null;
@@ -258,6 +273,11 @@ export function parseString(str, idx) {
 
 export function parseNumber(str, idx) {
   try {
+    // Skip initial whitespace
+    while (idx < str.length && /\s/.test(str[idx])) {
+      idx++;
+    }
+
     let data = '';
     let start = idx;
 
@@ -315,6 +335,11 @@ export function parseNumber(str, idx) {
 
 export function parseNull(str, idx) {
   try {
+    // Skip initial whitespace
+    while (idx < str.length && /\s/.test(str[idx])) {
+      idx++;
+    }
+
     const null_val = 'null';
     if (str.slice(idx, idx + null_val.length) === null_val) {
       return [null, idx + null_val.length];
