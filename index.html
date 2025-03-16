@@ -39,14 +39,14 @@
     <script type="module" src="json_parser.js"></script>
 
     <script type="module">
-      import { parseJson } from './json_parser.js';
+      import { parseValue } from './json_parser.js';
 
       // Add event listener to button
       document.getElementById('parseButton').addEventListener('click', () => {
         const jsonInput = document.getElementById('jsonInput').value; // Get JSON from textarea
         const resultMessage = document.getElementById('resultMessage'); // Area to display result
         // Try parsing the JSON using parseJson function
-        const result = parseJson(jsonInput, 0);
+        const result = parseValue(jsonInput, 0);
         console.log(result);
         if (result != null) {
           resultMessage.textContent = '✨💅 Valid JSON 💅✨';
