@@ -1,6 +1,11 @@
 export function parseJson(str, idx) {
   const dict = {};
   try {
+    // Skip initial whitespace
+    while (idx < str.length && /\s/.test(str[idx])) {
+      idx++;
+    }
+
     if (str[idx] !== '{') {
       console.error("Expected '{' at index " + idx);
       return null;
@@ -105,6 +110,11 @@ export function parseValue(str, idx) {
 export function parseArray(str, idx) {
   const arr = [];
   try {
+    // Skip initial whitespace
+    while (idx < str.length && /\s/.test(str[idx])) {
+      idx++;
+    }
+
     if (str[idx] !== '[') {
       return null;
     }

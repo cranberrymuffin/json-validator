@@ -139,6 +139,7 @@ describe('JSON Parser', () => {
         "mixed"  \t:\n"value"
       }
     `;
+    console.log(parseJson(jsonWithSpaces, 0));
     const [result] = parseJson(jsonWithSpaces, 0);
     expect(result).toEqual({
       spaces: 'value',
